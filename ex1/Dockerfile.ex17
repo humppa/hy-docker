@@ -1,0 +1,9 @@
+FROM ubuntu:latest
+WORKDIR /
+COPY ex15.sh .
+RUN set -x \
+  && chmod 0755 ex15.sh \
+  && apt-get update \
+  && apt-get install --yes curl \
+  && apt-get clean
+CMD /ex15.sh
