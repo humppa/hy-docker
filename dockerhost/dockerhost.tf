@@ -15,10 +15,10 @@ resource "libvirt_cloudinit_disk" "init" {
 
 resource "libvirt_volume" "docker_vol" {
   name = "debian10.qcow2"
-  pool = "default"
   format = "qcow2"
-  source = "http://127.0.0.1:8000/debian-10.0.2-20190721-openstack-amd64.qcow2"
-  # "https://cdimage.debian.org/cdimage/openstack/current/debian-10.0.2-20190721-openstack-amd64.qcow2"
+  pool = "default"
+  # Pre-resize the cloud image before use
+  source = "http://127.0.0.1:8000/debian-buster-amd64.qcow2"
 }
 
 resource "libvirt_domain" "dockerhost" {

@@ -1,9 +1,13 @@
 
 # dockerhost
 
+[tito]: https://titosoft.github.io/kvm/terraform-and-kvm
+
 Provisioning and configuration for running Docker in a dedicated Debian Buster
 virtual machine. Terraform assumes local KVM virtualization and *libvirt*
 provider are available.
+
+Some tips to set up [Terraform with libvirt provider][tito].
 
 ## usage
 

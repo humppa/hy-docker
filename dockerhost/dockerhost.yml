@@ -4,14 +4,20 @@
   become: true
 
   tasks:
+  - name: Set hostname
+    hostname:
+      name: dockerhost
+
   - name: Drop source package indexing
     lineinfile:
       state: absent
       regexp: "^deb-src"
       path: /etc/apt/sources.list
 
-  - name: Install Docker
+  - name: Install Docker and utilities
     apt:
-      name: docker.io
       update_cache: true
+      name:
+      - curl
+      - docker.io
     ignore_errors: "{{ ansible_check_mode }}"
