@@ -122,3 +122,53 @@ See included `Dockerfile.ex110`.
 
 
 # 1.11
+
+Note! Because `package.json` uses `cross-env` in `scripts.start`, I moved
+*cross-env* from `devDependencies` to `dependencies`. After that, following should be valid:
+
+See included `Dockerfile.ex111`.
+
+    [dockerhost] ~/backend-example-docker $ docker build -f Dockerfile.ex111 -t ex111 .
+    [dockerhost] ~/backend-example-docker $ docker run --rm -p 8000:8000 -v $(pwd)/logs.txt:/home/node/logs.txt ex111
+
+
+# 1.12
+
+Using the same `Dockerfile`s as in exercises 1.10 and 1.11.
+
+    [dockerhost] ~/backend-example-docker $ docker run -d --rm --name front -p 5000:5000
+            -e API_URL=http://localhost:8000/ ex110:latest
+
+    [dockerhost] ~/backend-example-docker $ docker run -d --rm --name back -p 8000:8000
+            -e FRONT_URL=http://localhost:5000 -v $(pwd)/logs.txt:/home/node/logs.txt ex111:latest
+
+
+# 1.13
+
+See included `Dockerfile.ex113`.
+
+    [dockerhost] ~/spring-example-project $ docker build -f Dockerfile.ex113 -t ex113 .
+    [dockerhost] ~/spring-example-project $ docker run -d --rm -p 8080:8080 ex113:latest
+
+
+# 1.14
+
+See included `Dockerfile.ex114`.
+
+    [dockerhost] ~/rails-example-project $ docker build -f Dockerfile.ex114 -t ex114 .
+    [dockerhost] ~/rails-example-project $ docker run -d --rm -p 3000:3000 ex114:latest
+
+
+# 1.15
+
+TODO
+
+
+# 1.16
+
+[https://hy-docker.herokuapp.com](https://hy-docker.herokuapp.com)
+
+
+# 1.17
+
+TODO

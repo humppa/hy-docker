@@ -1,0 +1,14 @@
+FROM ruby:2.6.0
+
+EXPOSE 3000
+WORKDIR /app
+
+ADD . .
+RUN set -x \
+  && apt-get update \
+  && apt-get install --yes nodejs \
+  && apt-get clean \
+  && bundle install \
+  && rails db:migrate RAILS_ENV=development
+
+CMD ["rails", "s"]
